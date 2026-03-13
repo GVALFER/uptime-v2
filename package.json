@@ -3,7 +3,7 @@
    "type": "module",
    "scripts": {
       "dev": "tsx watch src/index.ts",
-      "build": "tsc",
+      "build": "npm run generate && tsc",
       "start": "node dist/src/index.js",
       "migrate:deploy": "prisma migrate deploy --config=./prisma/prisma.config.ts",
       "pm2:start": "pm2 start ecosystem.config.cjs --update-env",
