@@ -5,6 +5,9 @@
       "dev": "tsx watch src/index.ts",
       "build": "tsc",
       "start": "node dist/src/index.js",
+      "migrate:deploy": "prisma migrate deploy --config=./prisma/prisma.config.ts",
+      "pm2:start": "pm2 start ecosystem.config.cjs --update-env",
+      "pm2:reload": "pm2 reload uptime-api --update-env",
       "generate": "npx prisma generate",
       "migrate": "npx prisma migrate dev --config=./prisma/prisma.config.ts",
       "studio": "npx prisma studio --config=./prisma/prisma.config.ts"
