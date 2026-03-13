@@ -87,6 +87,70 @@ Test from your machine:
 curl -i -H "X-API-KEY:your_key" http://<SERVER_IP>:3105/
 ```
 
+## API routes
+
+All routes require the `X-API-KEY` header.
+
+Base URL example:
+
+```text
+http://<SERVER_IP>:3105
+```
+
+Routes:
+
+- `GET /monitors` list monitors with pagination, sorting, and filters
+- `POST /monitors` create monitor
+- `PUT /monitors` update monitor by `host`
+- `DELETE /monitors` delete monitor by `host`
+
+`GET /monitors` query params:
+
+- `host`
+- `enabled=true|false`
+- `status=UNK|UP|DOWN`
+- `globalFilter`
+- `page`, `pageSize`
+- `sortBy`, `sortOrder`
+
+`POST /monitors` body:
+
+```json
+{
+  "host": "1.1.1.1",
+  "label": "Cloudflare DNS",
+  "enabled": true
+}
+```
+
+`PUT /monitors` body:
+
+```json
+{
+  "host": "1.1.1.1",
+  "label": "Main DNS",
+  "enabled": false
+}
+```
+
+`DELETE /monitors` body:
+
+```json
+{
+  "host": "1.1.1.1"
+}
+```
+
+Example request:
+
+```bash
+curl -i \
+  -H "X-API-KEY:your_key" \
+  -H "Content-Type: application/json" \
+  -X POST http://<SERVER_IP>:3105/monitors \
+  -d '{"host":"1.1.1.1","label":"Cloudflare DNS","enabled":true}'
+```
+
 Update deployment:
 
 ```bash
