@@ -63,7 +63,7 @@ export const processMonitors = async () => {
 
    for (let index = 0; index < monitors.length; index += CONFIG.CONCURRENT_CHECKS) {
       const batch = monitors.slice(index, index + CONFIG.CONCURRENT_CHECKS);
-      await Promise.allSettled(batch.map((monitor) => processMonitor(monitor)));
+      await Promise.allSettled(batch.map((monitor: any) => processMonitor(monitor)));
    }
 };
 
