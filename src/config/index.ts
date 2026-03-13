@@ -9,7 +9,7 @@ export const CONFIG = {
    MAX_FAILURES: 3,
    TELEGRAM: {
       BOT_TOKEN: process.env.TELEGRAM_TOKEN || "",
-      CHAT_ID: "5340795230",
+      CHAT_ID: process.env.TELEGRAM_CHAT_ID || "",
       DISABLE_LINK_PREVIEW: true,
    },
 } as const;
