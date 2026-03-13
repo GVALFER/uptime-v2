@@ -1,0 +1,27 @@
+datasource db {
+    provider = "sqlite"
+}
+
+generator client {
+    provider = "prisma-client-js"
+    output   = "./generated/client"
+}
+
+model Monitor {
+    id                   String   @id @default(uuid())
+    host                 String   @unique
+    label                String?
+    enabled              Boolean  @default(true)
+    status               String   @default("UNK")
+    consecutive_failures Int      @default(0)
+    last_response_ms     Float?
+    last_error           String?
+    last_checked_at      DateTime?
+    created_at           DateTime @default(now())
+    updated_at           DateTime @updatedAt
+
+    @@index([enabled])
+    @@index([status])
+    @@index([last_checked_at])
+    @@map("monitors")
+}
