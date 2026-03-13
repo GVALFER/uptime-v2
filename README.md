@@ -43,7 +43,7 @@ ufw --force enable
 Clone and prepare:
 
 ```bash
-mkdir -p /opt/uptime-v2
+mkdir -p /opt/uptime
 cd /opt/uptime-v2
 git clone <REPO_URL> .
 ```
@@ -154,7 +154,7 @@ curl -i \
 Update deployment:
 
 ```bash
-cd /opt/uptime-v2
+cd /opt/uptime
 git pull
 npm ci
 npm run build
